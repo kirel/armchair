@@ -5,7 +5,7 @@ require 'armchair'
 describe Armchair do
   
   before(:each) do
-    @dburl = 'http://localhost:5984/test_armchair/'
+    @dburl = 'http://localhost:5984/test_armchair'
     @couch = Armchair.new @dburl
     @doc = {'some' => 'doc'}
   end

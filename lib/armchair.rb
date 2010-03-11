@@ -10,7 +10,7 @@ class Armchair
   #  couch = Armchair.new 'http://127.0.0.1:5984/mycouch'
   #
   def initialize dburl, batch_size = 100
-    @dburl = dburl
+    @dburl = dburl.gsub(/\/$/,'')
     @batch_size = batch_size
   end
   
@@ -37,7 +37,7 @@ class Armchair
   
   # Returns the size of the Armchair (the number of documents stored).
   def size
-    RestClient.get(@dburl + '_all_docs?limit=0', :accept => :json) do |r|
+    RestClient.get(@dburl + '/_all_docs?limit=0', :accept => :json) do |r|
       case r.code
       when 200
         JSON(r.body)['total_rows']
@@ -51,7 +51,7 @@ class Armchair
   def each
     # iterate in batches of @batch_size
     # initial query
-    res = RestClient.get(@dburl + "_all_docs?limit=#{@batch_size+1}&include_docs=true", :accept => :json) do |r|
+    res = RestClient.get(@dburl + "/_all_docs?limit=#{@batch_size+1}&include_docs=true", :accept => :json) do |r|
       case r.code
       when 200
         JSON(r.body)
@@ -65,7 +65,7 @@ class Armchair
     # subsequent queries
     while last
       startkey = last['key']
-      res = RestClient.get(@dburl+"_all_docs?startkey=%22#{startkey}%22&limit=#{@batch_size+1}&include_docs=true", :accept => :json) do |r|
+      res = RestClient.get(@dburl + "/_all_docs?startkey=%22#{startkey}%22&limit=#{@batch_size+1}&include_docs=true", :accept => :json) do |r|
         case r.code
         when 200
           JSON(r.body)
