@@ -1,6 +1,19 @@
-= armchair
+= Armchair
 
-Description goes here.
+Armchair is a <em>very</em> minimal interface to CouchDB. It can only store documents and iterate over all of them.
+
+== Usage
+
+  armchair = Armchair.new 'http://url.to.couch:5984/databasename'
+  armchair << { 'foo' => 'bar' } << { 'foo' => 'baz' }
+  armchair.each do |doc|
+    do_something_useful_with doc
+  end
+  
+Armchair is Enumerable
+
+  armchair.map { |doc| doc['foo'] }.join # => "barbaz"
+  armchair.detect { |doc| doc['foo'] == 'bar' } # => { 'foo' => 'bar' }
 
 == Note on Patches/Pull Requests
  
