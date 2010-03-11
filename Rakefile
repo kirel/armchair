@@ -5,7 +5,7 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "armchair"
-    gem.version = '0.0.1'
+    gem.version = '0.0.2'
     gem.summary = %Q{Minimal CouchDB interface}
     gem.description = %Q{A minimal CouchDB interface that can do nothing but add documents and iterate over documents.}
     gem.email = "danishkirel@gmail.com"
