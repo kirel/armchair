@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Daniel Kirsch"]
   s.date = %q{2010-03-11}
-  s.description = %q{A minimal couchdb lib that can do nothing but iterate over your documents.}
+  s.description = %q{A minimal CouchDB interface that can do nothing but add documents and iterate over documents.}
   s.email = %q{danishkirel@gmail.com}
   s.extra_rdoc_files = [
     "LICENSE",
@@ -22,6 +22,7 @@ Gem::Specification.new do |s|
      "LICENSE",
      "README.rdoc",
      "Rakefile",
+     "armchair.gemspec",
      "lib/armchair.rb",
      "spec/armchair_spec.rb",
      "spec/spec.opts",
@@ -31,7 +32,7 @@ Gem::Specification.new do |s|
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.6}
-  s.summary = %q{minimal couchdb lib}
+  s.summary = %q{Minimal CouchDB interface}
   s.test_files = [
     "spec/armchair_spec.rb",
      "spec/spec_helper.rb"
